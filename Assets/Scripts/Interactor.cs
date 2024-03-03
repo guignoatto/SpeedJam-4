@@ -5,7 +5,7 @@ using UnityEngine;
 interface IInteractable
 {
     public void Interact();
-
+    public void StopInteract();
 }
 public class Interactor : MonoBehaviour
 {
@@ -31,7 +31,12 @@ public class Interactor : MonoBehaviour
                     interactableObject.Interact();
                 }
             }
+            
         }
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(InteractorSource.position, InteractorThickness);
+    }
 }

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static int numberOfItems = 0;
+    public static float numberOfItems = 0;
     public int maxItems = 3;
+
+    public static float playerSpeedMultiplier = 1;
     public static bool CanCarryMoreItems()
     {
         return numberOfItems < PlayerManager.Instance.maxItems;
     }
+
+
 
     // Singleton instance
     private static PlayerManager _instance;

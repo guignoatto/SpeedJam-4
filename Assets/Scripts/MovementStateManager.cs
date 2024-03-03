@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MovementStateManager : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public float moveSpeed = 4f;
+    private float speedMultiplier = 1f;
     [HideInInspector] public Vector3 dir;
 
     [SerializeField] private float groundYOffset;
@@ -18,6 +19,7 @@ public class MovementStateManager : MonoBehaviour
     private Vector3 spherePos;
     private float hzInput, vInput;
     private CharacterController controller;
+
 
     private void Start()
     {
@@ -37,7 +39,8 @@ public class MovementStateManager : MonoBehaviour
 
         dir = transform.forward * vInput + transform.right * hzInput;
 
-        controller.Move(dir * moveSpeed * Time.deltaTime);
+        speedMultiplier = PlayerManager.playerSpeedMultiplier;
+        controller.Move(dir * moveSpeed * Time.deltaTime * speedMultiplier);
     }
 
     private bool IsGrounded()
