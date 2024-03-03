@@ -32,14 +32,14 @@ public class TreeInteract : MonoBehaviour, IInteractable
             if(timer >= interactMaxTime)
             {
            
-                int RandomDrop = UnityEngine.Random.Range(1,4);
+                int RandomDrop = UnityEngine.Random.Range(1,5);
 
                 for (int i = 0; i < RandomDrop ; i++)
                 {
                     Instantiate(Log, transform.position, Quaternion.identity);
                 }
-                //StopInteract();
-                //Destroy(gameObject);
+                StopInteract();
+                Destroy(gameObject);
             }
         }
     }
