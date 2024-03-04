@@ -12,6 +12,10 @@ public class Interactor : MonoBehaviour
     public Transform InteractorSource;
     public float InteractorRange;
     public float InteractorThickness;
+    public float YOffsetAmount;
+    public float XOffsetAmount;
+    public float ZOffsetAmount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,8 @@ public class Interactor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hitInfo;
-            if (Physics.SphereCast(InteractorSource.position, InteractorThickness, InteractorSource.forward, out hitInfo, InteractorRange))
+            Vector3 origin = InteractorSource.position + new Vector3(XOffsetAmount, YOffsetAmount, ZOffsetAmount);
+            if (Physics.SphereCast(origin, InteractorThickness, InteractorSource.forward, out hitInfo, InteractorRange))
             {
                 if (hitInfo.collider.TryGetComponent(out IInteractable interactableObject))
                 {
@@ -37,6 +42,7 @@ public class Interactor : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(InteractorSource.position, InteractorThickness);
+        Vector3 origin = InteractorSource.position + new Vector3(XOffsetAmount, YOffsetAmount, ZOffsetAmount);
+        Gizmos.DrawWireSphere(origin, InteractorThickness);
     }
 }

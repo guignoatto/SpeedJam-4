@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     public int maxItems = 3;
 
     public float playerSpeedMultiplier = 1;
+
+    public UiManager textUi;
 
 
     public bool CanCarryMoreItems()
@@ -27,9 +31,11 @@ public class PlayerManager : MonoBehaviour
             {
                 log.SetActive(false);
             }
+            UpdateLogUI();
             return;
         }
         logs[num - 1].SetActive(true);
+        UpdateLogUI();
     }
 
     public void SpeedBuff(float speedBuff, float speedBuffDuration)
@@ -50,6 +56,18 @@ public class PlayerManager : MonoBehaviour
     {
         SetNumberOfItems(numberOfItems + 1);
         playerSpeedMultiplier = 1 / (float)Math.Sqrt(numberOfItems);
+    }
+
+    private void UpdateLogUI()
+    {
+        if (textUi != null)
+        {
+            textUi.UpdateLogText();
+        }
+        else
+        {
+            Debug.LogWarning("LogUi reference not set in PlayerManager!");
+        }
     }
 
     // Singleton instance

@@ -9,6 +9,8 @@ public class BarricadeManager : MonoBehaviour
 
     private BarricadeController _barricadeController;
 
+    
+
     private void Start()
     {
         _barricadeController = FindAnyObjectByType<BarricadeController>();

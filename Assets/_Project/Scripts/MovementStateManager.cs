@@ -27,6 +27,7 @@ public class MovementStateManager : MonoBehaviour
     [SerializeField] private int jumpCount = 0;
 
     [SerializeField] private AudioSource jumpSound;
+    [SerializeField] private AudioSource doubleJumpSound;
 
     [SerializeField] private Vector3 velocity;
 
@@ -123,6 +124,8 @@ public class MovementStateManager : MonoBehaviour
                 }
                 else if (jumpCount == 2)
                 {
+                    doubleJumpSound.pitch = Random.Range(2f, 3f);
+                    doubleJumpSound.Play();
                     movementState = MovementState.Jumping;
                     playerAnimator.SetTrigger("Jump");
                 }
@@ -159,9 +162,4 @@ public class MovementStateManager : MonoBehaviour
         checkGrounded = true;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(spherePos, controller.radius - 0.05f);
-    }
 }
