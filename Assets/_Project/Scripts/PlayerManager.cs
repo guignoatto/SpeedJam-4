@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +46,11 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void PickUpLog()
+    {
+        SetNumberOfItems(numberOfItems + 1);
+        playerSpeedMultiplier = 1 / (float)Math.Sqrt(numberOfItems);
+    }
 
     // Singleton instance
     public static PlayerManager Instance;

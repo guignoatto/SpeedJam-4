@@ -26,6 +26,8 @@ public class MovementStateManager : MonoBehaviour
     [SerializeField] private int maxJump = 2;
     [SerializeField] private int jumpCount = 0;
 
+    [SerializeField] private AudioSource jumpSound;
+
     [SerializeField] private Vector3 velocity;
 
     [SerializeField] private Animator playerAnimator;
@@ -114,7 +116,8 @@ public class MovementStateManager : MonoBehaviour
                 }
 
                 if (jumpCount == 1)
-                {
+                {   
+                    jumpSound.Play();
                     movementState = MovementState.Jumping;
                     playerAnimator.SetTrigger("Falling");
                 }
