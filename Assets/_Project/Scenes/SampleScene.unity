@@ -1571,7 +1571,7 @@ MonoBehaviour:
   CameraDistance: 4.78
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   IgnoreTag: 
   CameraRadius: 0.001
   DampingIntoCollision: 0
@@ -2244,7 +2244,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.11
-  m_Radius: 0.46
+  m_Radius: 0.65
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
@@ -2530,10 +2530,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractorSource: {fileID: 2090586283}
   InteractorRange: 2
-  InteractorThickness: 0.5
-  YOffsetAmount: 0.48
+  InteractorThickness: 0.37
+  YOffsetAmount: 0.66
   XOffsetAmount: 0
-  ZOffsetAmount: 0
+  ZOffsetAmount: -0.12
 --- !u!1001 &2083502131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2934,26 +2934,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1049755826479673438, guid: 0a220318384ba1649a331efc42561f1a, type: 3}
-      propertyPath: m_Size.x
-      value: 2.0880408
-      objectReference: {fileID: 0}
-    - target: {fileID: -1049755826479673438, guid: 0a220318384ba1649a331efc42561f1a, type: 3}
-      propertyPath: m_Size.y
-      value: 1.6376432
-      objectReference: {fileID: 0}
-    - target: {fileID: -1049755826479673438, guid: 0a220318384ba1649a331efc42561f1a, type: 3}
-      propertyPath: m_Size.z
-      value: 1.7714744
-      objectReference: {fileID: 0}
-    - target: {fileID: -1049755826479673438, guid: 0a220318384ba1649a331efc42561f1a, type: 3}
-      propertyPath: m_Center.x
-      value: 0.31196344
-      objectReference: {fileID: 0}
-    - target: {fileID: -1049755826479673438, guid: 0a220318384ba1649a331efc42561f1a, type: 3}
-      propertyPath: m_Center.z
-      value: 0.10958743
-      objectReference: {fileID: 0}
     - target: {fileID: 1218347679047942, guid: 0a220318384ba1649a331efc42561f1a, type: 3}
       propertyPath: m_Name
       value: Tree_3
