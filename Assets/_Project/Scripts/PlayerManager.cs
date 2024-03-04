@@ -4,34 +4,46 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static float numberOfItems = 0;
+    public float numberOfItems = 0;
     public int maxItems = 3;
 
-    public static float playerSpeedMultiplier = 1;
-    public static bool CanCarryMoreItems()
+    public float playerSpeedMultiplier = 1f;
+
+    public bool CanCarryMoreItems()
     {
-        return numberOfItems < PlayerManager.Instance.maxItems;
+        return numberOfItems < maxItems;
     }
 
+    public void SpeedBuff(float speedBuff, float speedBuffDuration)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ActivateSpeedBuff(speedBuff, speedBuffDuration));
+    }
+
+    private IEnumerator ActivateSpeedBuff(float speedBuff, float speedBuffDuration)
+    {
+        playerSpeedMultiplier = playerSpeedMultiplier * speedBuff;
+        yield return new WaitForSeconds(speedBuffDuration);
+        playerSpeedMultiplier = 1f;
+
+    }
 
 
     // Singleton instance
-    private static PlayerManager _instance;
-    public static PlayerManager Instance
+    public static PlayerManager Instance;
+
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (_instance == null)
+            Instance = FindObjectOfType<PlayerManager>();
+            if (Instance == null)
             {
-                _instance = FindObjectOfType<PlayerManager>();
-                if (_instance == null)
-                {
-                    GameObject obj = new GameObject();
-                    obj.name = typeof(PlayerManager).Name;
-                    _instance = obj.AddComponent<PlayerManager>();
-                }
+                GameObject obj = new GameObject();
+                obj.name = typeof(PlayerManager).Name;
+                Instance = obj.AddComponent<PlayerManager>();
             }
-            return _instance;
         }
     }
+   
 }

@@ -55,7 +55,7 @@ public class MovementStateManager : MonoBehaviour
 
         dir = transform.forward * vInput + transform.right * hzInput;
 
-        speedMultiplier = PlayerManager.playerSpeedMultiplier;
+        speedMultiplier = PlayerManager.Instance.playerSpeedMultiplier;
         controller.Move(dir * moveSpeed * speedMultiplier * Time.deltaTime);
 
         if (controller.velocity.x == 0 && controller.velocity.z == 0

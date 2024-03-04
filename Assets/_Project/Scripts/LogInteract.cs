@@ -7,12 +7,11 @@ public class LogInteract : MonoBehaviour, IInteractable
 {
     public void Interact()
     {
-        if (PlayerManager.CanCarryMoreItems())
+        if (PlayerManager.Instance.CanCarryMoreItems())
         {
-            PlayerManager.numberOfItems++;
-            PlayerManager.playerSpeedMultiplier = 1/(float)Math.Sqrt(PlayerManager.numberOfItems);
-            Debug.Log(PlayerManager.playerSpeedMultiplier);
-            //Debug.Log("+1 Item");
+            PlayerManager.Instance.numberOfItems++;
+            PlayerManager.Instance.playerSpeedMultiplier = 1/(float)Math.Sqrt(PlayerManager.Instance.numberOfItems);
+            Debug.Log(PlayerManager.Instance.playerSpeedMultiplier);
             Destroy(gameObject);
         }
         else
